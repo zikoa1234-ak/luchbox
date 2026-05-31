@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PantryBox</string>
+    
+    <!-- Common strings -->
+    <string name="add">Add</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="search">Search</string>
+    <string name="loading">Loading...</string>
+    <string name="error">Error</string>
+    
+    <!-- Screens -->
+    <string name="home">Home</string>
+    <string name="pantry">Pantry</string>
+    <string name="recipes">Recipes</string>
+    <string name="weekly_planner">Weekly Planner</string>
+    <string name="shopping_list">Shopping List</string>
+    <string name="progress">Progress</string>
+    <string name="settings">Settings</string>
+    
+    <!-- Pantry screen -->
+    <string name="pantry_empty_title">Your pantry is empty</string>
+    <string name="pantry_empty_message">Add some ingredients to get started</string>
+    <string name="low_stock_warning">%d items low on stock</string>
+    <string name="add_item">Add Item</string>
+    <string name="edit_item">Edit Item</string>
+    
+    <!-- Recipe screen -->
+    <string name="no_recipes_available">No recipes available</string>
+    <string name="no_recipes_found">No recipes found</string>
+    <string name="available_recipes">Available Recipes</string>
+    <string name="partial_recipes">Partial Recipes</string>
+    <string name="all_recipes">All Recipes</string>
+    <string name="missing_ingredients">Missing: %s</string>
+    <string name="confirm_cooking">Confirm Cooking</string>
+    <string name="confirm_cooking_message">This will deduct all used ingredients from your pantry stock. Continue?</string>
+    <string name="yes_cooked_it">Yes, I cooked it</string>
+    
+    <!-- Units -->
+    <string name="unit_pieces">pcs</string>
+    <string name="unit_kg">kg</string>
+    <string name="unit_grams">g</string>
+    <string name="unit_liters">L</string>
+    <string name="unit_ml">ml</string>
+    <string name="unit_cup">cup</string>
+    <string name="unit_tbsp">tbsp</string>
+    <string name="unit_tsp">tsp</string>
+</resources>

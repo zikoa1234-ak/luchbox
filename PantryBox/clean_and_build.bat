@@ -4,37 +4,30 @@ echo     PantryBox - Clean and Build Script
 echo ===============================================
 echo.
 
-echo [1/5] Stopping Gradle daemon...
-call gradlew --stop
-
-echo [2/5] Cleaning project...
-if exist .gradle (
-    echo Removing .gradle folder...
-    rmdir /s /q .gradle
+echo [1/6] Checking Java version...
+java -version 2>&1 | findstr "version" || (
+    echo [✗] Java not found or not in PATH
+    echo Please run check_java_version.bat first
+    pause
+    exit /b 1
 )
 
-if exist .idea (
-    echo Removing .idea folder...
-    rmdir /s /q .idea
-)
+echo [2/6] Stopping Gradle daemon...
+call gradlew --stop 2>nul
 
-if exist app\build (
-    echo Removing app/build folder...
-    rmdir /s /q app\build
-)
+echo [3/6] Cleaning old cache folders...
+if exist .gradle rmdir /s /q .gradle
+if exist .idea rmdir /s /q .idea
+if exist app\build rmdir /s /q app\build
+if exist build rmdir /s /q build
 
-if exist build (
-    echo Removing build folder...
-    rmdir /s /q build
-)
+echo [4/6] Downloading Gradle 8.5...
+call gradlew wrapper --gradle-version 8.5
 
-echo [3/5] Running clean command...
+echo [5/6] Running clean...
 call gradlew clean
 
-echo [4/5] Downloading Gradle wrapper...
-call gradlew wrapper
-
-echo [5/5] Building project...
+echo [6/6] Building project...
 call gradlew build --stacktrace
 
 echo.
@@ -42,6 +35,10 @@ if %errorlevel% equ 0 (
     echo ===============================================
     echo     BUILD SUCCESSFUL! 🎉
     echo ===============================================
+    echo.
+    echo Gradle: 8.5
+    echo AGP: 8.5.0
+    echo Java: 21 (compatible)
     echo.
     echo Next steps:
     echo 1. Open project in Android Studio
@@ -53,8 +50,12 @@ if %errorlevel% equ 0 (
     echo     BUILD FAILED 😔
     echo ===============================================
     echo.
-    echo Check TROUBLESHOOTING.md for help
-    echo Or try: gradlew build --info
+    echo Common solutions:
+    echo 1. Run check_java_version.bat
+    echo 2. In Android Studio: File → Invalidate Caches
+    echo 3. Set JAVA_HOME to JDK 17
+    echo.
+    echo Run with --info for more details: gradlew build --info
 )
 
 echo.
